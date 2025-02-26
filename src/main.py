@@ -76,6 +76,7 @@ def main(args: argparse.Namespace):
                 params_bytes = msgpack_serialize(unreplicate(state.params))
                 save_checkpoint_in_background(args, params_bytes, postfix="last")
             if valid_dataloader is None:
+                print("No validation set, skipping evaluation")
                 continue
 
             metrics = evaluate(state, valid_dataloader)
